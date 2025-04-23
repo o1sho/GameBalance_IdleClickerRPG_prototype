@@ -1,0 +1,144 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnycs0dqdeg5a"]
+
+[ext_resource type="Script" uid="uid://bm10w0s42drs0" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c86hxyob6u1rx" path="res://scenes/enemy.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cgr7qt2o2w8h1" path="res://scenes/hp_bar.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 540.0
+offset_bottom = 960.0
+script = ExtResource("1_lnu2h")
+
+[node name="Enemy" parent="." instance=ExtResource("1_uwrxv")]
+layout_mode = 1
+
+[node name="HPBar" parent="." instance=ExtResource("2_yqjtg")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 68.0
+offset_top = 101.0
+offset_right = 468.0
+offset_bottom = 128.0
+grow_horizontal = 1
+
+[node name="CurrentEnemyHPLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 145.0
+offset_right = 179.0
+offset_bottom = 168.0
+text = "MaxEnemyHP"
+
+[node name="EnemyIndexLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 167.0
+offset_right = 179.0
+offset_bottom = 190.0
+text = "IndexEnemy"
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 190.0
+offset_right = 179.0
+offset_bottom = 213.0
+text = "Level"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -147.0
+offset_right = -45.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(225, 0)
+
+[node name="UpgradeTapButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Upgrade
+Tap"
+
+[node name="UpgradeDPSButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Upgrade
+DPS"
+
+[node name="NextSessionButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next
+Session"
+
+[node name="DebugTimeSkipButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Time
+Skip"
+
+[node name="SessionTimerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Timer"
+
+[node name="GoldLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 52.0
+text = "Gold"
+
+[node name="GoldForKillingEnemyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 29.0
+offset_right = 307.0
+offset_bottom = 52.0
+text = "GoldForKillingEnemy"
+
+[node name="TapDamageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 57.0
+offset_right = 40.0
+offset_bottom = 80.0
+text = "TapDamage"
+
+[node name="TapLevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 57.0
+offset_right = 371.0
+offset_bottom = 80.0
+text = "TapLevel"
+
+[node name="CostUpgradeTapDamageLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 742.0
+offset_right = 131.0
+offset_bottom = 791.0
+text = "CostUpgrade
+TapDamage"
+
+[connection signal="pressed" from="Enemy" to="." method="_on_enemy_pressed"]
+[connection signal="pressed" from="HBoxContainer/UpgradeTapButton" to="." method="_on_upgrade_tap_button_pressed"]

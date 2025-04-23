@@ -12,7 +12,17 @@ config_version=5
 
 config/name="GameBalance_IdleClickerRPG_prototype"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerPortraitData="*res://global_scripts/PlayerPortraitData.gd"
+Data="*res://global_scripts/Data.gd"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/stretch/mode="canvas_items"
 
 [rendering]
 
